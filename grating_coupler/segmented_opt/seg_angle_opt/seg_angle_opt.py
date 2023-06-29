@@ -26,8 +26,8 @@ P_angles_scatter = np.load(config_path + "/P_angles_scatter.npy")
 
 # !需要修改
 update_factor = 100  # 迭代次数
-scatter_angle = -5  # 散射角度
-scatter_index = -2  # 散射索引
+scatter_angle = -20  # 散射角度
+scatter_index = -5  # 散射索引
 idea_output = 1 - P_angles_scatter[scatter_index]
 
 ######################## Basic simulation ############################
@@ -241,6 +241,14 @@ init_para = (
     )
     - 1.44**2
 ) / (1.96**2 - 1.44**2)
+# init_para = (
+#     np.abs(
+#         np.load(
+#             config_path + "/seg_angle_opt/" + f"final_eps_seg_angle_{scatter_angle}.npy"
+#         )[0:number_para, 5]
+#     )
+#     - 1.44**2
+# ) / (1.96**2 - 1.44**2)
 
 init_para[init_para < 0] = 0
 init_para[init_para > 1] = 1
