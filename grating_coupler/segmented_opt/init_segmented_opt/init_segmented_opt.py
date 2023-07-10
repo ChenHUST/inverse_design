@@ -24,10 +24,10 @@ import nlopt  # need install nlopt
 # # plt.show()
 ######################## 导入P_angles_scatter ############################
 
-update_factor = 100  # 迭代次数
-scatter_angle = -5  # 散射角度
+update_factor = 50  # 迭代次数
+scatter_angle = 0  # 散射角度
 ######################## Basic simulation ############################
-np.random.seed(500)
+np.random.seed(100)
 # if True compute flux (Gaussian source), if False compute DFT (Continue source)
 compute_flux = True
 # size of input and output waveguide
@@ -35,7 +35,7 @@ w = 0.5
 h = 0.2
 
 # resolution size
-grid = 0.02
+grid = 0.01
 resolution = 1 / grid
 
 # thickness of PML
@@ -45,7 +45,7 @@ dpml = 1
 input_wvg_length = 5
 output_wvg_length = 5
 # !design_region
-design_region_x = 5
+design_region_x = 3
 design_region_y = 0.2
 sx = input_wvg_length + design_region_x + output_wvg_length + 2 * dpml
 
@@ -115,7 +115,7 @@ eta_e = 0.55  # erosion design field thresholding point (between 0 and 1)
 eta_d = 1 - eta_e  # dilation design field thresholding point (between 0 and 1)
 filter_radius = mpa.get_conic_radius_from_eta_e(minimum_length, eta_e)
 
-design_region_resolution_x = int(resolution)
+design_region_resolution_x = int(resolution / 2)
 design_region_resolution_y = 5  # 200nm resolution
 Nx = int(design_region_resolution_x * design_region_x)
 Ny = int(design_region_resolution_y * design_region_y)
