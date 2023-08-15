@@ -31,7 +31,7 @@ import nlopt  # need install nlopt
 np.random.seed(800)
 update_factor = 100  # 迭代次数
 
-for scatter_angle in [-14]:
+for scatter_angle in [0]:
     ######################## Basic simulation ############################
     # if True compute flux (Gaussian source), if False compute DFT (Continue source)
     compute_flux = True
@@ -50,7 +50,7 @@ for scatter_angle in [-14]:
     input_wvg_length = 5
     output_wvg_length = 5
     # !design_region
-    design_region_x = 4
+    design_region_x = 10
     design_region_y = 0.2
     sx = input_wvg_length + design_region_x + output_wvg_length + 2 * dpml
 
@@ -101,18 +101,18 @@ for scatter_angle in [-14]:
     input_waveguide_geo = mp.Block(
         material=SiN,
         center=mp.Vector3(
-            -0.5 * sx + 0.5 * input_wvg_length + dpml,
+            -0.5 * sx + 0.5 * input_wvg_length,
             -0.5 * sy + Substrate_thickness + BOX_thickness + 0.5 * h + dpml,
         ),
-        size=mp.Vector3(input_wvg_length, h),
+        size=mp.Vector3(input_wvg_length + 2 * dpml, h),
     )
     output_waveguide_geo = mp.Block(
         material=SiN,
         center=mp.Vector3(
-            0.5 * sx - 0.5 * output_wvg_length - dpml,
+            0.5 * sx - 0.5 * output_wvg_length,
             -0.5 * sy + Substrate_thickness + BOX_thickness + 0.5 * h + dpml,
         ),
-        size=mp.Vector3(output_wvg_length, h),
+        size=mp.Vector3(output_wvg_length + 2 * dpml, h),
     )
 
     geometry = [
