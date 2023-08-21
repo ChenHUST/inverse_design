@@ -30,10 +30,10 @@ mp.verbosity(0)
 # np.random.seed(2000)
 opt_num = 5
 # for opt in range(2, opt_num + 1, 1):
-opt = 1
+opt = 3
 save_path = cur_path + "/opt_" + str(opt) + "/"
-if not os.path.exists(save_path):
-    os.mkdir(save_path)
+# if not os.path.exists(save_path):
+#     os.mkdir(save_path)
 # if True compute flux (Gaussian source), if False compute DFT (Continue source)
 compute_flux = True
 # size of input and output waveguide
